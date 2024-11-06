@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="T04"/>
+        <attribute name="authors" value="LEN0V0"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-11-06 05:11:10 PM"/>
+        <attribute name="created" value="TEVOMFYwO0xBUFRPUC1WVDQ1QTU3QzsyMDI0LTExLTA2OzAzOjUxOjM1IFBNOzI3MDY="/>
+        <attribute name="edited" value="TEVOMFYwO0xBUFRPUC1WVDQ1QTU3QzsyMDI0LTExLTA2OzAzOjUyOjUxIFBNOzM7TEVOT1ZPO0xBUFRPUC1FRFU5NDY4SjsyMDIxLTEwLTI0OzAxOjMyOjQzIFBNO1QwNC5mcHJnOzYzNTQ="/>
+        <attribute name="edited" value="TEVOMFYwO0xBUFRPUC1WVDQ1QTU3QzsyMDI0LTExLTA2OzA1OjExOjEwIFBNOzU7MjgwOQ=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="arrISBN" type="String" array="True" size="3"/>
+            <declare name="i" type="Integer" array="False" size=""/>
+            <declare name="arrPrice" type="Real" array="True" size="3"/>
+            <for variable="i" start="0" end="2" direction="inc" step="1">
+                <assign variable="arrPrice[i]" expression="0"/>
+            </for>
+            <declare name="arrQuantity" type="Integer" array="True" size="3"/>
+            <for variable="i" start="0" end="2" direction="inc" step="1">
+                <assign variable="arrQuantity[i]" expression="0"/>
+            </for>
+            <declare name="arrEksPrice" type="Real" array="True" size="3"/>
+            <for variable="i" start="0" end="2" direction="inc" step="1">
+                <assign variable="arrEksPrice[i]" expression="0"/>
+            </for>
+            <declare name="TotalHarga" type="Real" array="False" size=""/>
+            <assign variable="TotalHarga" expression="0"/>
+            <declare name="Quantity0, Quantity1, Quantity2, b" type="Integer" array="False" size=""/>
+            <assign variable="Quantity0" expression="0"/>
+            <assign variable="Quantity1" expression="0"/>
+            <assign variable="Quantity2" expression="0"/>
+            <declare name="Quantity" type="Integer" array="True" size="3"/>
+            <for variable="i" start="0" end="2" direction="inc" step="1">
+                <assign variable="Quantity[i]" expression="0"/>
+            </for>
+            <assign variable="b" expression="0"/>
+            <declare name="Buku0, Buku1, Buku2" type="String" array="False" size=""/>
+            <assign variable="Buku0" expression="&quot;buku&quot;"/>
+            <assign variable="Buku1" expression="&quot;buku&quot;"/>
+            <assign variable="Buku2" expression="&quot;buku&quot;"/>
+            <while expression="b&lt;3">
+                <input variable="arrISBN[b]"/>
+                <if expression="arrISBN[b]!=&quot;---&quot;">
+                    <then>
+                        <if expression="arrISBN[b]=arrISBN[0]">
+                            <then>
+                                <assign variable="Buku0" expression="arrISBN[b]"/>
+                                <assign variable="b" expression="0"/>
+                                <input variable="arrPrice[b]"/>
+                                <input variable="arrQuantity[b]"/>
+                                <assign variable="Quantity0" expression="Quantity0+arrQuantity[b]"/>
+                                <assign variable="b" expression="b+1"/>
+                            </then>
+                            <else>
+                                <assign variable="Buku1" expression="arrISBN[b]"/>
+                                <if expression="arrISBN[b]=arrISBN[1]">
+                                    <then>
+                                        <assign variable="b" expression="1"/>
+                                        <input variable="arrPrice[b]"/>
+                                        <input variable="arrQuantity[b]"/>
+                                        <assign variable="Quantity1" expression="Quantity1+arrQuantity[b]"/>
+                                        <assign variable="b" expression="b+1"/>
+                                    </then>
+                                    <else>
+                                        <assign variable="Buku2" expression="arrISBN[b]"/>
+                                        <if expression="arrISBN[b]=arrISBN[2]">
+                                            <then>
+                                                <assign variable="b" expression="2"/>
+                                                <input variable="arrPrice[b]"/>
+                                                <input variable="arrQuantity[b]"/>
+                                                <assign variable="Quantity2" expression="Quantity2+arrQuantity[b]"/>
+                                                <assign variable="b" expression="b+1"/>
+                                            </then>
+                                            <else/>
+                                        </if>
+                                    </else>
+                                </if>
+                            </else>
+                        </if>
+                    </then>
+                    <else>
+                        <assign variable="b" expression="3"/>
+                    </else>
+                </if>
+            </while>
+            <if expression="Quantity0 &lt;= 5">
+                <then>
+                    <assign variable="arrPrice[0]" expression="arrPrice[0]-arrPrice[0]*0.02"/>
+                </then>
+                <else>
+                    <if expression="Quantity0 &lt;= 10">
+                        <then>
+                            <assign variable="arrPrice[0]" expression="arrPrice[0]-arrPrice[0]*0.05"/>
+                        </then>
+                        <else>
+                            <if expression="Quantity0 &lt;= 20">
+                                <then>
+                                    <assign variable="arrPrice[0]" expression="arrPrice[0]-arrPrice[0]*0.12"/>
+                                </then>
+                                <else/>
+                            </if>
+                        </else>
+                    </if>
+                </else>
+            </if>
+            <assign variable="arrEksPrice[0]" expression="arrPrice[0]*Quantity0"/>
+            <if expression="Quantity1 &gt;= 20">
+                <then>
+                    <assign variable="arrPrice[1]" expression="arrPrice[1]-arrPrice[1]*0.12"/>
+                </then>
+                <else>
+                    <if expression="Quantity1 &gt;= 10">
+                        <then>
+                            <assign variable="arrPrice[1]" expression="arrPrice[1]-arrPrice[1]*0.05"/>
+                        </then>
+                        <else>
+                            <if expression="Quantity1 &gt;= 5">
+                                <then>
+                                    <assign variable="arrPrice[1]" expression="arrPrice[1]-arrPrice[1]*0.02"/>
+                                </then>
+                                <else/>
+                            </if>
+                        </else>
+                    </if>
+                </else>
+            </if>
+            <assign variable="arrEksPrice[1]" expression="arrPrice[1]*Quantity1"/>
+            <if expression="Quantity2 &gt;= 20">
+                <then>
+                    <assign variable="arrPrice[2]" expression="arrPrice[2]-arrPrice[2]*0.12"/>
+                </then>
+                <else>
+                    <if expression="Quantity2 &gt;= 10">
+                        <then>
+                            <assign variable="arrPrice[2]" expression="arrPrice[2]-arrPrice[2]*0.05"/>
+                        </then>
+                        <else>
+                            <if expression="Quantity2 &gt;= 5">
+                                <then>
+                                    <assign variable="arrPrice[2]" expression="arrPrice[2]-arrPrice[2]*0.02"/>
+                                </then>
+                                <else/>
+                            </if>
+                        </else>
+                    </if>
+                </else>
+            </if>
+            <assign variable="arrEksPrice[2]" expression="arrPrice[2]*Quantity2"/>
+            <assign variable="TotalHarga" expression="arrEksPrice[0]+arrEksPrice[1]+arrEksPrice[2]"/>
+            <output expression="ToFixed(TotalHarga, 2)" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
