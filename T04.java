@@ -8,113 +8,158 @@ public class T04 {
     private static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
-        String[] arrISBN = new String[3];
+        String[] iSBN = new String[3];
+        int[] jumlahbuku = new int[3];
+
+        jumlahbuku[0] = 0;
+        jumlahbuku[1] = 0;
+        jumlahbuku[2] = 0;
+        double[] harga = new double[3];
+
+        harga[0] = 0;
+        harga[1] = 0;
+        harga[2] = 0;
+        double[] totalharga = new double[3];
+
+        totalharga[0] = 0;
+        totalharga[1] = 0;
+        totalharga[2] = 0;
+        double totalakhir1;
         int i;
-        double[] arrPrice = new double[3];
+        int jumlahbuku0;
+        int jumlahbuku1;
+        int jumlahbuku2;
 
-        for (i = 0; i <= 2; i++) {
-            arrPrice[i] = 0;
-        }
-        int[] arrQuantity = new int[3];
+        i = 0;
+        jumlahbuku0 = 0;
+        jumlahbuku1 = 0;
+        jumlahbuku2 = 0;
+        String buku0;
+        String buku1;
+        String buku2;
 
-        for (i = 0; i <= 2; i++) {
-            arrQuantity[i] = 0;
-        }
-        double[] arrEksPrice = new double[3];
+        buku0 = "Buku";
+        buku1 = "Buku";
+        buku2 = "Buku";
+        int nol;
+        int satu;
+        int dua;
 
-        for (i = 0; i <= 2; i++) {
-            arrEksPrice[i] = 0;
-        }
-        double totalHarga;
-
-        totalHarga = 0;
-        int quantity0, quantity1, quantity2, b;
-
-        quantity0 = 0;
-        quantity1 = 0;
-        quantity2 = 0;
-        int[] quantity = new int[3];
-
-        for (i = 0; i <= 2; i++) {
-            quantity[i] = 0;
-        }
-        b = 0;
-        String buku0, buku1, buku2;
-
-        buku0 = "buku";
-        buku1 = "buku";
-        buku2 = "buku";
-        while (b < 3) {
-            arrISBN[b] = input.nextLine();
-            if (!arrISBN[b].equals("---")) {
-                if (arrISBN[b].equals(arrISBN[0])) {
-                    buku0 = arrISBN[b];
-                    b = 0;
-                    arrPrice[b] = Double.parseDouble(input.nextLine());
-                    arrQuantity[b] = Integer.parseInt(input.nextLine());
-                    quantity0 = quantity0 + arrQuantity[b];
-                    b = b + 1;
-                } else {
-                    buku1 = arrISBN[b];
-                    if (arrISBN[b].equals(arrISBN[1])) {
-                        b = 1;
-                        arrPrice[b] = Double.parseDouble(input.nextLine());
-                        arrQuantity[b] = Integer.parseInt(input.nextLine());
-                        quantity1 = quantity1 + arrQuantity[b];
-                        b = b + 1;
+        nol = 0;
+        satu = 1;
+        dua = 2;
+        do {
+            iSBN[i] = input.nextLine();
+            if (iSBN[i].equals("---")) {
+                i = 3;
+            } else {
+                if (iSBN[i].equals(iSBN[0])) {
+                    if (nol == 0) {
+                        buku0 = iSBN[i];
+                    }
+                    if (iSBN[0].equals(buku0)) {
+                        i = 0;
+                        harga[i] = Double.parseDouble(input.nextLine());
+                        jumlahbuku[i] = Integer.parseInt(input.nextLine());
+                        jumlahbuku0 = jumlahbuku0 + jumlahbuku[i];
+                        nol = 3;
+                        i = i + 1;
                     } else {
-                        buku2 = arrISBN[b];
-                        if (arrISBN[b].equals(arrISBN[2])) {
-                            b = 2;
-                            arrPrice[b] = Double.parseDouble(input.nextLine());
-                            arrQuantity[b] = Integer.parseInt(input.nextLine());
-                            quantity2 = quantity2 + arrQuantity[b];
-                            b = b + 1;
+                        if (satu == 1) {
+                            buku1 = iSBN[i];
+                        }
+                        if (iSBN[0].equals(buku1)) {
+                            i = 1;
+                            harga[i] = Double.parseDouble(input.nextLine());
+                            jumlahbuku[i] = Integer.parseInt(input.nextLine());
+                            jumlahbuku1 = jumlahbuku1 + jumlahbuku[i];
+                            nol = 3;
+                            i = i + 1;
+                        } else {
+                            i = 2;
+                            harga[i] = Double.parseDouble(input.nextLine());
+                            jumlahbuku[i] = Integer.parseInt(input.nextLine());
+                            jumlahbuku2 = jumlahbuku2 + jumlahbuku[i];
+                            nol = 3;
+                            i = 0;
+                        }
+                    }
+                } else {
+                    if (iSBN[i].equals(iSBN[1])) {
+                        if (satu == 1) {
+                            buku1 = iSBN[i];
+                        }
+                        if (iSBN[1].equals(buku1)) {
+                            i = 1;
+                            harga[i] = Double.parseDouble(input.nextLine());
+                            jumlahbuku[i] = Integer.parseInt(input.nextLine());
+                            jumlahbuku1 = jumlahbuku1 + jumlahbuku[i];
+                            satu = 3;
+                            i = i + 1;
+                        } else {
+                            i = 2;
+                            harga[i] = Double.parseDouble(input.nextLine());
+                            jumlahbuku[i] = Integer.parseInt(input.nextLine());
+                            jumlahbuku2 = jumlahbuku2 + jumlahbuku[i];
+                            satu = 3;
+                            i = 0;
+                        }
+                    } else {
+                        if (iSBN[i].equals(iSBN[2])) {
+                            if (dua == 2) {
+                                buku2 = iSBN[i];
+                            }
+                            if (iSBN[2].equals(buku2)) {
+                                i = 2;
+                                harga[i] = Double.parseDouble(input.nextLine());
+                                jumlahbuku[i] = Integer.parseInt(input.nextLine());
+                                jumlahbuku2 = jumlahbuku2 + jumlahbuku[i];
+                                dua = 3;
+                                i = 0;
+                            }
                         }
                     }
                 }
-            } else {
-                b = 3;
             }
-        }
-        if (quantity0 <= 5) {
-            arrPrice[0] = arrPrice[0] - arrPrice[0] * 0.02;
+        } while (i < 3);
+        if (jumlahbuku0 >= 20) {
+            harga[0] = harga[0] - harga[0] * 12 / 100;
         } else {
-            if (quantity0 <= 10) {
-                arrPrice[0] = arrPrice[0] - arrPrice[0] * 0.05;
+            if (jumlahbuku0 >= 10) {
+                harga[0] = harga[0] - harga[0] * 5 / 100;
             } else {
-                if (quantity0 <= 20) {
-                    arrPrice[0] = arrPrice[0] - arrPrice[0] * 0.12;
+                if (jumlahbuku0 >= 5) {
+                    harga[0] = harga[0] - harga[0] * 2 / 100;
                 }
             }
         }
-        arrEksPrice[0] = arrPrice[0] * quantity0;
-        if (quantity1 >= 20) {
-            arrPrice[1] = arrPrice[1] - arrPrice[1] * 0.12;
+        totalharga[0] = harga[0] * jumlahbuku0;
+        if (jumlahbuku1 >= 20) {
+            harga[1] = harga[1] - harga[1] * 12 / 100;
         } else {
-            if (quantity1 >= 10) {
-                arrPrice[1] = arrPrice[1] - arrPrice[1] * 0.05;
+            if (jumlahbuku1 >= 10) {
+                harga[1] = harga[1] - harga[1] * 5 / 100;
             } else {
-                if (quantity1 >= 5) {
-                    arrPrice[1] = arrPrice[1] - arrPrice[1] * 0.02;
+                if (jumlahbuku1 >= 5) {
+                    harga[1] = harga[1] - harga[1] * 2 / 100;
                 }
             }
         }
-        arrEksPrice[1] = arrPrice[1] * quantity1;
-        if (quantity2 >= 20) {
-            arrPrice[2] = arrPrice[2] - arrPrice[2] * 0.12;
+        totalharga[1] = harga[1] * jumlahbuku1;
+        if (jumlahbuku2 >= 20) {
+            harga[2] = harga[2] - harga[2] * 12 / 100;
         } else {
-            if (quantity2 >= 10) {
-                arrPrice[2] = arrPrice[2] - arrPrice[2] * 0.05;
+            if (jumlahbuku2 >= 10) {
+                harga[2] = harga[2] - harga[2] * 5 / 100;
             } else {
-                if (quantity2 >= 5) {
-                    arrPrice[2] = arrPrice[2] - arrPrice[2] * 0.02;
+                if (jumlahbuku2 >= 5) {
+                    harga[2] = harga[2] - harga[2] * 2 / 100;
                 }
             }
         }
-        arrEksPrice[2] = arrPrice[2] * quantity2;
-        totalHarga = arrEksPrice[0] + arrEksPrice[1] + arrEksPrice[2];
-        System.out.println(toFixed(totalHarga,2));
+        totalharga[2] = harga[2] * jumlahbuku2;
+        totalakhir1 = totalharga[0] + totalharga[1] + totalharga[2];
+        System.out.println(toFixed(totalakhir1,2));
     }
     
     private static String toFixed(double value, int digits) {
